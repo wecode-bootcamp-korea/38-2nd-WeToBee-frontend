@@ -7,6 +7,7 @@ import KakaoLogin from "../src/pages/Login/Kakaologin";
 import ProductPlannerCreate from "./pages/ProductDetail/ProductPlannerCreate";
 import ProductPlannerDetailPage from "./pages/ProductDetail/ProductPlannerDetail";
 import PublicLayout from "./PublicRouter";
+import Review from "./pages/Review/Review";
 
 const Router = () => {
   return (
@@ -27,6 +28,7 @@ const Router = () => {
             element={<ProductPlannerDetailPage />}
           />
           <Route path="/login" element={<Login />} />
+          <Route path="/review" element={<Review />} />
         </Route>
 
         <Route path="/oauth/kakao/callback" element={<KakaoLogin />} />
