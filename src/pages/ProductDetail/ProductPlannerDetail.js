@@ -1,52 +1,48 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import { Map, Polyline, MapMarker, Polygon } from "react-kakao-maps-sdk";
 import { pointsToPath } from "../../utils";
 import styled from "styled-components";
-
-const MOCK_POINT = {
-  circle: [],
-  ellipse: [],
-  marker: [
-    {
-      type: "marker",
-      x: 128.04511733198515,
-      y: 37.00416637576114,
-      coordinate: "wgs84",
-      zIndex: 0,
-      content: "",
-    },
-    {
-      type: "marker",
-      x: 126.88401154452076,
-      y: 36.4366056510582,
-      coordinate: "wgs84",
-      zIndex: 0,
-      content: "",
-    },
-    {
-      type: "marker",
-      x: 127.98036117014014,
-      y: 35.519040164457344,
-      coordinate: "wgs84",
-      zIndex: 0,
-      content: "",
-    },
-  ],
-  polyline: [],
-  rectangle: [],
-  polygon: [],
-};
+import { useParams } from "react-router-dom";
 
 const ProductPlannerDetailPage = () => {
   const [startDate, setStartDate] = useState(new Date());
-
   const [endDate, setEndDate] = useState(null);
+  const { planId } = useParams();
 
-  const onChangeDates = dates => {
-    const [start, end] = dates;
-    setStartDate(start);
-    setEndDate(end);
+  const [userCreateMapData, setUserCreateMapData] = useState({});
+
+  // 데이터 값을 받아와서 사용자가 만든 데이터 값이 맵에 적혀짐
+  useEffect(() => {
+    fetch(`http://10.58.52.75:3000/plan/plandetail/${planId}`, {
+      method: "GET",
+      headers: { "content-Type": "application/json" },
+    })
+      .then(res => res.json())
+      .then(data => setUserCreateMapData(data));
+  }, [planId]);
+
+  const data = userCreateMapData?.plan?.reduce(
+    (acc, curr) => ({ ...acc, marker: [...acc.marker, curr.data.marker[0]] }),
+    {
+      circle: [],
+      ellipse: [],
+      marker: [],
+      polyline: [],
+      rectangle: [],
+      polygon: [],
+    }
+  );
+
+  const start = userCreateMapData?.plan?.[0].start_date.replace(/\T.*/, " ");
+  const end = userCreateMapData?.plan?.[0].end_date.replace(/\T.*/, " ");
+  const planid = userCreateMapData?.plan?.[0].plan_id;
+
+  const salesButton = () => {
+    fetch(`http://10.58.52.75:3000/plan/sellingplan/1/${planid}`, {
+      method: "POST",
+      headers: { "content-Type": "application/json" },
+    });
   };
 
   return (
@@ -67,10 +63,10 @@ const ProductPlannerDetailPage = () => {
               }}
               level={13} // 지도의 확대 레벨
             >
-              {MOCK_POINT.polyline.map(({ points, options }, i) => (
+              {data?.polyline?.map(({ points, options }, i) => (
                 <Polyline key={i} path={pointsToPath(points)} {...options} />
               ))}
-              {MOCK_POINT.marker.map(({ x, y, zIndex }, i) => (
+              {data?.marker?.map(({ x, y, zIndex }, i) => (
                 <MapMarker
                   key={i}
                   position={{
@@ -80,21 +76,18 @@ const ProductPlannerDetailPage = () => {
                   zIndex={zIndex}
                 />
               ))}
-              {MOCK_POINT.polygon.map(({ options, points }, i) => (
+              {data?.polygon?.map(({ options, points }, i) => (
                 <Polygon key={i} path={pointsToPath(points)} {...options} />
               ))}
             </Map>
           </S.MapStyle>
-          <DatePicker
-            style={{ width: "100px" }}
-            selected={startDate}
-            onChange={onChangeDates}
-            startDate={startDate}
-            endDate={endDate}
-            inline
-            selectsRange
-          />
+          <div>
+            {start} ~ {end}
+          </div>
         </S.MapAndDate>
+        <div>
+          <S.SaleButton onClick={salesButton}>판매하기</S.SaleButton>
+        </div>
       </div>
     </S.Main>
   );
@@ -124,6 +117,9 @@ const S = {
   `,
   MapStyle: styled.div`
     padding-right: 10px;
+  `,
+  SaleButton: styled.button`
+    width: 50px;
   `,
 };
 

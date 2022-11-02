@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
+import PlannerCard from "./PlannerCard";
 
 const ProductPlannerList = () => {
   return (
@@ -26,29 +28,28 @@ const ProductPlannerList = () => {
           <S.PlannerTextSeccond margin="25px">
             한국 여행을 즐겨 보세요
           </S.PlannerTextSeccond>
-          <S.PlannerButton>플래너 시작하기</S.PlannerButton>
+          <Link to="/planner-detail-create">
+            <S.PlannerButton>플래너 시작하기</S.PlannerButton>
+          </Link>
         </S.PlannerCreateForm>
       </S.LogoSection>
-      <S.myCreatePlanner>
+      <S.MyCreatePlanner>
         <div>
-          <S.myCreatePlannerTextParents>
-            <S.myCreatePlannerText>내가 만든 플래너</S.myCreatePlannerText>
-          </S.myCreatePlannerTextParents>
+          <S.MyCreatePlannerTextParents>
+            <S.MyCreatePlannerText>내가 만든 플래너</S.MyCreatePlannerText>
+          </S.MyCreatePlannerTextParents>
           <div>
-            <S.mockImg
-              src="/images/ProductPlannerRightImg.png"
-              alt="PlannerLogo"
-            />
+            <PlannerCard />
           </div>
         </div>
-      </S.myCreatePlanner>
+      </S.MyCreatePlanner>
     </S.Main>
   );
 };
 
 const S = {
   Main: styled.main`
-    margin-top: 100px;
+    margin-top: 40px;
     width: 100vw;
     height: 100vh;
     background: rgb(245, 245, 245);
@@ -113,7 +114,7 @@ const S = {
       background-color: pink;
     }
   `,
-  myCreatePlanner: styled.div`
+  MyCreatePlanner: styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
@@ -121,7 +122,7 @@ const S = {
     padding: 25px 50px;
   `,
 
-  myCreatePlannerText: styled.div`
+  MyCreatePlannerText: styled.div`
     width: 1000px;
     font-size: 20px;
     font-weight: 300;
@@ -129,7 +130,7 @@ const S = {
     padding-bottom: 15px;
   `,
 
-  myCreatePlannerTextParents: styled.div`
+  MyCreatePlannerTextParents: styled.div`
     width: 100%;
   `,
 

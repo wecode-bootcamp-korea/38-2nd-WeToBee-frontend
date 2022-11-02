@@ -22,25 +22,25 @@ const Router = () => {
             element={<ProductPlannerList />}
           />
           <Route
-            path="/planner-detail-page/:plannerId"
+            path="/planner-detail-page/:planId"
             element={<ProductPlannerDetailPage />}
           />
-          <Route
+          {/* <Route
             path="/planner-detail-page"
             element={<ProductPlannerDetailPage />}
-          />
+          /> */}
           <Route path="/login" element={<Login />} />
           <Route path="/review" element={<Review />} />
           <Route path="/Mypage" element={<Mypage />} />
         </Route>
 
+        <Route path="/login" element={<Login />} />
         <Route path="/oauth/kakao/callback" element={<KakaoLogin />} />
 
         <Route
           path="/planner-detail-create"
           element={<ProductPlannerCreate />}
         />
-        <Route path="/detailreview" element={<DetailReview />} />
       </Routes>
     </BrowserRouter>
   );

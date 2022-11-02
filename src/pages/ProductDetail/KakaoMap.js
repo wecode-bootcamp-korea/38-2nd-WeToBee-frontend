@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+import { Link } from "react-router-dom";
 import { Map, DrawingManager, ZoomControl } from "react-kakao-maps-sdk";
 import styled from "styled-components";
 import DatePicker from "react-datepicker";
@@ -17,9 +18,7 @@ const KakaoMap = () => {
   };
 
   const managerRef = useRef(null);
-
   const [position, setPosition] = useState();
-
   const [overlayData, setOverlayData] = useState({
     arrow: [],
     circle: [],
@@ -39,14 +38,22 @@ const KakaoMap = () => {
   function drawOverlayData() {
     const manager = managerRef.current;
     setOverlayData(manager.getData());
-    fetch("http://10.58.52.199:3000/a/b", {
+    fetch("http://10.58.52.75:3000/plan/insert/1", {
       method: "POST",
       headers: {
         "content-Type": "application/json",
       },
-      body: JSON.stringify(manager.getData()),
+      body: JSON.stringify({
+        ...manager.getData(),
+        startDate: startDate
+          .toISOString()
+          .replace("T", " ")
+          .replace(/\..*/, ""),
+        endDate: endDate.toISOString().replace("T", " ").replace(/\..*/, ""),
+      }),
     });
-    //FETCHPOST: 데이터를 받아옴에 따라 데이터를 저장 할만한 곳 에 저장 해야함 //FETCHGET: 그다음에는 페이지 이동후 데이터 호출
+    //FETCHPOST: 마커값과 달력의 start, end data 를 백엔드 DB 에 저장 && //FETCHGET: 디테일 페이지에서 해당 마커값 요청 && 메인 플레너 페이지에서 사용자테이블에 있는 date값과 이미지 유저프로필을 불러와야함
+    // Authorization: localStorage.getItem("token"),{ startDate: startDate, endDate: endDate },
   }
 
   return (
@@ -113,13 +120,13 @@ const KakaoMap = () => {
             gap: "8px",
           }}
         >
-          <S.DrawingButton
+          {/* <S.DrawingButton
             onClick={e => {
               selectOverlay(kakao.maps.drawing.OverlayType.POLYLINE);
             }}
           >
             Line
-          </S.DrawingButton>
+          </S.DrawingButton> 백단의 신텍스 오류로 해당 Line은 추가 구현 사항으로 빼놓음 */}
           <S.DrawingButton
             onClick={e => {
               selectOverlay(kakao.maps.drawing.OverlayType.MARKER);
@@ -137,7 +144,9 @@ const KakaoMap = () => {
             <S.SaveButton onClick={drawOverlayData}>SAVE</S.SaveButton>
           </S.ButtonBox>
           <S.ButtonBox>
-            <S.SaveButton>MOVE</S.SaveButton>
+            <Link to="/product-planner-list">
+              <S.SaveButton>MOVE</S.SaveButton>
+            </Link>
           </S.ButtonBox>
         </div>
       </div>
