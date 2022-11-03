@@ -43,7 +43,6 @@ const S = {
   Img: styled.img`
     width: 350px;
   `,
-
   Wrapper: styled.div`
     width: 500px;
     margin: 0 40px 200px 0;
