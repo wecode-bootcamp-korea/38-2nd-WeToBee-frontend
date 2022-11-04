@@ -8,6 +8,7 @@ import ProductPlannerCreate from "./pages/ProductDetail/ProductPlannerCreate";
 import ProductPlannerDetailPage from "./pages/ProductDetail/ProductPlannerDetail";
 import PublicLayout from "./PublicRouter";
 import Review from "./pages/Review/Review";
+import DetailReview from "../src/pages/DetailReview/DetailReview";
 
 const Router = () => {
   return (
@@ -37,6 +38,7 @@ const Router = () => {
           path="/planner-detail-create"
           element={<ProductPlannerCreate />}
         />
+        <Route path="/detailreview" element={<DetailReview />} />
       </Routes>
     </BrowserRouter>
   );
