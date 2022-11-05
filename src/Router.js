@@ -9,6 +9,7 @@ import ProductPlannerDetailPage from "./pages/ProductDetail/ProductPlannerDetail
 import PublicLayout from "./PublicRouter";
 import Review from "./pages/Review/Review";
 import DetailReview from "../src/pages/DetailReview/DetailReview";
+import Mypage from "./pages/Mypage/Mypage";
 
 const Router = () => {
   return (
@@ -30,6 +31,7 @@ const Router = () => {
           />
           <Route path="/login" element={<Login />} />
           <Route path="/review" element={<Review />} />
+          <Route path="/Mypage" element={<Mypage />} />
         </Route>
 
         <Route path="/oauth/kakao/callback" element={<KakaoLogin />} />
