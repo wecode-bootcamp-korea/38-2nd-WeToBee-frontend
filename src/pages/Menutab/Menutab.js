@@ -11,10 +11,10 @@ const Menutab = () => {
             <StyledLink to="/">HOME</StyledLink>
           </S.Menuname>
           <S.Menuname>
-            <StyledLink to="/">플래너</StyledLink>
+            <StyledLink to="/product-planner-list">플래너</StyledLink>
           </S.Menuname>
           <S.Menuname>
-            <StyledLink to="/">탐색</StyledLink>
+            <StyledLink to="/">리뷰</StyledLink>
           </S.Menuname>
           <S.Menuname>
             <StyledLink to="/">추천</StyledLink>
@@ -36,7 +36,7 @@ const S = {
   Menubox: styled.div`
     display: flex;
     justify-content: center;
-    font-size: 30px;
+    font-size: 20px;
     border-bottom: 1px solid black;
   `,
 
@@ -44,8 +44,8 @@ const S = {
     display: flex;
     justify-content: space-around;
     width: 550px;
-    height: 30px;
-    margin: 30px;
+    height: 20px;
+    margin: 15px;
   `,
 
   Menuname: styled.li`

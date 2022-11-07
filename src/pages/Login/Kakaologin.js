@@ -1,32 +1,41 @@
 import React, { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import { API_KEY, REDIRECT_URI } from "./Login";
 
 const KakaoLogin = () => {
-  let code = new URL(window.location.href).searchParams.get("code");
+  const [searchParams] = useSearchParams();
+  const code = searchParams.get("code");
   const navigate = useNavigate();
+  const fetchUrl = "https://kauth.kakao.com/oauth/token";
 
-  const getKakaoToken = () => {
-    fetch(`https://kauth.kakao.com/oauth/token`, {
+  useEffect(() => {
+    fetch(fetchUrl, {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
       },
-      body: `grant_type=authorization_code&client_id=${process.env.REACT_APP_REST_API_KEY}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}&code=${code}`,
+      body: `grant_type=authorization_code&client_id=${API_KEY}&redirect_url=${REDIRECT_URI}&code=${code}`,
     })
       .then(res => res.json())
-      .then(data => {
-        if (data.access_token) {
-          localStorage.setItem("token", data.access_token);
-        } else {
+      .then(res => {
+        if (res.access_token) {
+          fetch(`http://10.58.52.240:3000/auth/kakao/signin`, {
+            method: "POST",
+            headers: {
+              authorization: res.access_token,
+            },
+          })
+            .then(res => res.json())
+            .then(res => {
+              if (res.accessToken) {
+                localStorage.setItem("accessToken", res.accessToken);
+              }
+            });
           navigate("/");
         }
       });
-  };
+  });
 
-  useEffect(() => {
-    if (!code) return;
-    getKakaoToken();
-  }, []);
   return <div>KakaoLogin</div>;
 };
 

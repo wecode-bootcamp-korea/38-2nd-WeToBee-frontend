@@ -6,7 +6,7 @@ import { AiFillMail } from "react-icons/ai";
 
 const Footer = () => {
   return (
-    <>
+    <S.FooterBox>
       <div>
         <S.Top>
           <S.Toplist>광고/제휴문의</S.Toplist>
@@ -24,22 +24,26 @@ const Footer = () => {
             <S.Icons>
               <S.Iconslist>
                 <a href="https://www.facebook.com">
-                  <FaFacebook color="#77777F" size="42" />
+                  <FaFacebook className="icons" color="#77777F" size="42" />
                 </a>
               </S.Iconslist>
               <S.Iconslist>
                 <a href="https://www.instagram.com">
-                  <FaInstagram color="#77777F" size="42" />
+                  <FaInstagram className="icons" color="#77777F" size="42" />
                 </a>
               </S.Iconslist>
               <S.Iconslist>
                 <a href="https://www.kakaocorp.com">
-                  <RiKakaoTalkFill color="#77777F" size="45" />
+                  <RiKakaoTalkFill
+                    className="icons"
+                    color="#77777F"
+                    size="45"
+                  />
                 </a>
               </S.Iconslist>
               <S.Iconslist>
                 <a href="https://www.google.com/intl/ko/gmail/about/">
-                  <AiFillMail color="#77777F" size="42" />
+                  <AiFillMail className="icons" color="#77777F" size="42" />
                 </a>
               </S.Iconslist>
             </S.Icons>
@@ -50,30 +54,33 @@ const Footer = () => {
           <S.Leftcontact>contact : wetobeeteam@gmail.com</S.Leftcontact>
         </S.Bottomtext>
       </S.Container>
-    </>
+    </S.FooterBox>
   );
 };
 
 export default Footer;
 
 const S = {
+  FooterBox: styled.div`
+    height: 100px;
+  `,
   Top: styled.ul`
     display: flex;
     justify-content: center;
     text-align: center;
-    border: 1px solid black;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
     color: #7c673c;
     background-color: #ffcc5b;
   `,
 
   Toplist: styled.li`
     margin: 25px;
-    font-size: 25px;
+    font-size: 15px;
   `,
 
   Container: styled.div`
-    background-color: #f3f3f3;
-    padding: 10px;
+    height: 130px;
   `,
 
   BottomTitle: styled.div`
@@ -82,33 +89,36 @@ const S = {
   `,
 
   Bottomtext: styled.div`
-    margin: 30px;
+    margin-left: 24px;
   `,
 
   Left: styled.div`
-    font-size: 70px;
+    font-size: 30px;
     margin: 30px;
     font-family: "Baloo 2", cursive;
   `,
 
   Lefttext: styled.p`
-    font-size: 25px;
+    font-size: 15px;
     margin-bottom: 20px;
     color: #86868c;
   `,
 
   Leftcontact: styled.p`
-    font-size: 25px;
+    font-size: 15px;
     color: #86868c;
   `,
 
   Icons: styled.ul`
     display: flex;
-    margin: 30px;
+    margin: 10px;
     color: #86868c;
   `,
 
   Iconslist: styled.li`
-    margin: 10px;
+    .icons {
+      width: 30px;
+      margin: 10px;
+    }
   `,
 };

@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 export const REDIRECT_URI = process.env.REACT_APP_REDIRECT_URI;
 export const API_KEY = process.env.REACT_APP_REST_API_KEY;
-export const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.REACT_APP_REST_API_KEY}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}&response_type=code`;
+export const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.REACT_APP_REST_API_KEY}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}&response_type=code&prompt=login`;
 
 const Login = () => {
   const handleLogin = () => {
@@ -28,7 +28,7 @@ export default Login;
 
 const S = {
   Signin: styled.div`
-    font-size: 30px;
+    font-size: 20px;
     margin-bottom: 40px;
     text-align: center;
   `,
@@ -38,16 +38,14 @@ const S = {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    border: 1px solid black;
   `,
   Img: styled.img`
-    width: 350px;
+    width: 300px;
   `,
   Wrapper: styled.div`
-    width: 500px;
+    width: 300px;
     margin: 0 40px 200px 0;
     padding: 80px 20px;
-    border: 1px solid black;
     display: flex;
     flex-direction: column;
     justify-content: center;
