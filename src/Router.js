@@ -1,33 +1,44 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Product from "./pages/ProductList/Product/Product";
 import ProductPlannerList from "./pages/ProductList/ProductPlannerList";
-import Nav from "./components/Nav/Nav";
-import Footer from "./components/Footer/Footer";
 import Login from "./pages/Login/Login";
 import KakaoLogin from "../src/pages/Login/Kakaologin";
-import ProductPlannerDetail from "./pages/ProductDetail/ProductPlannerCreate";
+import ProductPlannerCreate from "./pages/ProductDetail/ProductPlannerCreate";
 import ProductPlannerDetailPage from "./pages/ProductDetail/ProductPlannerDetail";
+import PublicLayout from "./PublicRouter";
+import Review from "./pages/Review/Review";
+import DetailReview from "../src/pages/DetailReview/DetailReview";
+import Mypage from "./pages/Mypage/Mypage";
 
 const Router = () => {
   return (
     <BrowserRouter>
-      <Nav />
       <Routes>
-        <Route path="/" element={<Product />} />
-        <Route path="/Login" element={<Login />} />
-        <Route path="/kakao-login" element={<KakaoLogin />} />
-        <Route path="/product-planner-list" element={<ProductPlannerList />} />
+        <Route element={<PublicLayout />}>
+          <Route path="/" element={<Product />} />
+          <Route
+            path="/product-planner-list"
+            element={<ProductPlannerList />}
+          />
+          <Route
+            path="/planner-detail-page/:planId"
+            element={<ProductPlannerDetailPage />}
+          />
+          <Route path="/login" element={<Login />} />
+          <Route path="/review" element={<Review />} />
+          <Route path="/Mypage" element={<Mypage />} />
+          <Route path="/detail-review" element={<DetailReview />} />
+        </Route>
+        <Route path="/detailreview" element-={<DetailReview />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/oauth/kakao/callback" element={<KakaoLogin />} />
+
         <Route
           path="/planner-detail-create"
-          element={<ProductPlannerDetail />}
-        />
-        <Route
-          path="/planner-detail-page"
-          element={<ProductPlannerDetailPage />}
+          element={<ProductPlannerCreate />}
         />
       </Routes>
-      <Footer />
     </BrowserRouter>
   );
 };
