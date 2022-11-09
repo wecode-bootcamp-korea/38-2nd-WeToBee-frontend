@@ -1,8 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Dropdown from "./Dropdown";
+import { Link } from "react-router-dom";
 
-const Nav = () => {
+const Nav = ({ setIsLoginToken, isLoginToken }) => {
+  useEffect(() => {
+    setIsLoginToken(!localStorage.getItem("accessToken") ? true : false);
+  });
+
   const [isView, setIsView] = useState(false);
   return (
     <div>
@@ -18,14 +23,20 @@ const Nav = () => {
             </S.ImgBox>
             <S.NavRight>
               <S.Reservation>내역</S.Reservation>
-              <S.Login
-                onClick={() => {
-                  setIsView(!isView);
-                }}
-              >
-                로그인
+              <StyledLink to="/login">
+                {isLoginToken === true ? (
+                  <S.Login>로그인</S.Login>
+                ) : (
+                  <S.Profile
+                    src="/images/profile 2.png"
+                    alt="profile"
+                    onClick={() => {
+                      setIsView(!isView);
+                    }}
+                  />
+                )}
                 {isView && <Dropdown />}
-              </S.Login>
+              </StyledLink>
             </S.NavRight>
           </S.NavBox>
         </S.NavContainer>
@@ -36,6 +47,9 @@ const Nav = () => {
 
 export default Nav;
 
+const StyledLink = styled(Link)`
+  text-decoration: none;
+`;
 const S = {
   NavMenu: styled.nav`
     display: flex;
@@ -99,5 +113,14 @@ const S = {
     display: flex;
     font-size: 25px;
     cursor: pointer;
+    color: #cccccc;
+  `,
+
+  Profile: styled.img`
+    width: 28px;
+    height: 28px;
+    margin-left: 20px;
+    border: 1px solid #86858c;
+    border-radius: 50%;
   `,
 };
