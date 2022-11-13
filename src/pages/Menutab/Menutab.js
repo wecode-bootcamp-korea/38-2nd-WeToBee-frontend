@@ -16,9 +16,6 @@ const Menutab = () => {
           <S.Menuname>
             <StyledLink to="/review">리뷰</StyledLink>
           </S.Menuname>
-          <S.Menuname>
-            <StyledLink to="/">추천</StyledLink>
-          </S.Menuname>
         </S.Menulist>
       </S.Menubox>
     </div>

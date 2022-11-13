@@ -27,8 +27,8 @@ const StyledLink = styled(Link)`
 const S = {
   Container: styled.div`
     position: absolute;
-    top: 75px;
-    right: 310px;
+    top: 65px;
+    right: 85px;
   `,
   Box: styled.ul`
     display: flex;
