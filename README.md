@@ -70,5 +70,3 @@
 |    infinite scroll     | ![infinite scroll](/public/images/infinitescroll.gif) |            - 무한 스크롤 기능            | **FRONT-END** </br>`양동선` </br> **BACK-END** </br> `심채원`  |
 
 ---
-
-### 기능 구현 사항 (정현석)
