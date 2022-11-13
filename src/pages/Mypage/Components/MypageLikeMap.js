@@ -11,13 +11,16 @@ const MypageLikeReview = () => {
   };
 
   useEffect(() => {
-    fetch(`http://3.34.40.236:3000/review/map?offset=0&limit=${reviewCount}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json;charset=utf-8",
-        authorization: localStorage.getItem("accessToken"),
-      },
-    })
+    fetch(
+      `http://43.201.110.57:3000/review/map?offset=0&limit=${reviewCount}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json;charset=utf-8",
+          authorization: localStorage.getItem("accessToken"),
+        },
+      }
+    )
       .then(res => res.json())
       .then(data => setItems(data));
   }, [reviewCount]);

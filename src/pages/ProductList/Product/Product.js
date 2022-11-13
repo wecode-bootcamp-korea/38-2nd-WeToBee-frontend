@@ -7,7 +7,7 @@ const Product = () => {
   const [areaSellingData, setAreaSellinData] = useState([]);
 
   useEffect(() => {
-    fetch("http://3.34.40.236:3000/plan/sellstate/2", {
+    fetch("http://43.201.110.57:3000/plan/sellstate/2", {
       method: "GET",
     })
       .then(res => res.json())

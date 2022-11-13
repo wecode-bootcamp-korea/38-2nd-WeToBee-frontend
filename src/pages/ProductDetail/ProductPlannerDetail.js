@@ -13,7 +13,6 @@ const ProductPlannerDetailPage = () => {
 
   const [userCreateMapData, setUserCreateMapData] = useState({});
 
-  // 데이터 값을 받아와서 사용자가 만든 데이터 값이 맵에 적혀짐
   useEffect(() => {
     fetch(`http://3.34.40.236:3000/plan/plandetail/${planId}`, {
       method: "GET",
@@ -61,7 +60,6 @@ const ProductPlannerDetailPage = () => {
             <S.MapStyle>
               <Map
                 center={{
-                  //MAP: 지도의 중심좌표
                   lat: 36.57171,
                   lng: 127.896262,
                 }}
@@ -69,7 +67,7 @@ const ProductPlannerDetailPage = () => {
                   width: "600px",
                   height: "600px",
                 }}
-                level={13} // 지도의 확대 레벨
+                level={13}
               >
                 {data?.polyline?.map(({ points, options }, i) => (
                   <Polyline key={i} path={pointsToPath(points)} {...options} />

@@ -1,13 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Dropdown from "./Dropdown";
 import { Link } from "react-router-dom";
 
 const Nav = ({ setIsLoginToken, isLoginToken }) => {
-  // useEffect(() => {
-  //   setIsLoginToken(!localStorage.getItem("accessToken") ? true : false);
-  // });
-
   const [isView, setIsView] = useState(false);
   return (
     <div>
@@ -101,6 +97,8 @@ const S = {
 
   NavRight: styled.div`
     display: flex;
+    justify-content: center;
+    align-items: center;
     margin-top: 10px;
     color: #cccccc;
   `,

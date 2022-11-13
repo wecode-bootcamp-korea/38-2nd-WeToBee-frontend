@@ -9,7 +9,7 @@ const Mypage = () => {
   const [userInfo, setUserInfo] = useState(null);
 
   useEffect(() => {
-    fetch("http://10.58.52.62:3000/user/personal-information", {
+    fetch("http://43.201.110.57:3000/user/personal-information", {
       method: "GET",
       headers: {
         "Content-Type": "application/json;charset=utf-8",

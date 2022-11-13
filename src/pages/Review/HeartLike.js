@@ -14,7 +14,7 @@ const HeartLike = props => {
       return;
     }
     setIsLike(!isLike);
-    fetch(`http://3.34.40.236:3000/review/like?userId=4`, {
+    fetch(`http://43.201.110.57:3000/review/like?userId=4`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json;charset=utf-8",

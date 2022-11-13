@@ -4,7 +4,6 @@ import { Map, DrawingManager, ZoomControl } from "react-kakao-maps-sdk";
 import styled from "styled-components";
 import DatePicker from "react-datepicker";
 
-/* global */
 const { kakao } = window;
 
 const KakaoMap = () => {
@@ -59,15 +58,12 @@ const KakaoMap = () => {
         endDate: endDate.toISOString().replace("T", " ").replace(/\..*/, ""),
       }),
     });
-    //FETCHPOST: 마커값과 달력의 start, end data 를 백엔드 DB 에 저장 && //FETCHGET: 디테일 페이지에서 해당 마커값 요청 && 메인 플레너 페이지에서 사용자테이블에 있는 date값과 이미지 유저프로필을 불러와야함
-    // Authorization: localStorage.getItem("token"),{ startDate: startDate, endDate: endDate },
   }
 
   return (
     <S.background>
       <Map
         center={{
-          // 지도의 중심좌표
           lat: 36.57171,
           lng: 127.896262,
         }}
@@ -75,7 +71,7 @@ const KakaoMap = () => {
           width: "86vw",
           height: "100vh",
         }}
-        level={13} // 지도의 확대 레벨
+        level={13}
         onZoomChanged={map => setLevel(map.getLevel())}
         onClick={(_t, mouseEvent) =>
           setPosition({
@@ -127,13 +123,6 @@ const KakaoMap = () => {
             gap: "8px",
           }}
         >
-          {/* <S.DrawingButton
-            onClick={e => {
-              selectOverlay(kakao.maps.drawing.OverlayType.POLYLINE);
-            }}
-          >
-            Line
-          </S.DrawingButton> 백단의 신텍스 오류로 해당 Line은 추가 구현 사항으로 빼놓음 */}
           <S.DrawingButton
             onClick={e => {
               selectOverlay(kakao.maps.drawing.OverlayType.MARKER);

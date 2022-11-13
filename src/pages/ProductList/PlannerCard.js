@@ -6,15 +6,13 @@ const PlannerCard = () => {
   const [isUserData, setIsUserData] = useState([]);
 
   useEffect(() => {
-    fetch("http://3.34.40.236:3000/plan/userplan", {
+    fetch("http://43.201.110.57:3000/plan/userplan", {
       method: "GET",
       headers: { authorization: localStorage.getItem("accessToken") },
     })
       .then(res => res.json())
       .then(data => setIsUserData(data));
   }, []);
-
-  // console.log(isUserData);
 
   return (
     <S.PlanContainer>

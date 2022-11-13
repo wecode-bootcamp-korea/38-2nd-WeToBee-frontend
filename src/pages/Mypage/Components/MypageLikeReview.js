@@ -12,7 +12,7 @@ const MypageLikeReview = () => {
 
   useEffect(() => {
     fetch(
-      `http://3.34.40.236:3000/review/get-like?offset=0&limit=${reviewCount}&userId=4`,
+      `http://43.201.110.57:3000/review/get-like?offset=0&limit=${reviewCount}&userId=4`,
       {
         method: "GET",
         headers: {

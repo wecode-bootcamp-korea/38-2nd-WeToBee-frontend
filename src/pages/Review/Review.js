@@ -16,7 +16,7 @@ const Review = () => {
 
   const fetchComments = async () => {
     const res = await fetch(
-      `http://3.34.40.236:3000/review/images?offset=${offSet}&limit=${LIMIT}`
+      `http://43.201.110.57:3000/review/images?offset=${offSet}&limit=${LIMIT}`
     );
     const { data } = await res.json();
     return data;

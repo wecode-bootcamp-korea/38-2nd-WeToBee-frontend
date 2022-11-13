@@ -27,25 +27,42 @@ const StyledLink = styled(Link)`
 const S = {
   Container: styled.div`
     position: absolute;
-    top: 65px;
-    right: 85px;
+    top: 80px;
+    right: 180px;
   `,
   Box: styled.ul`
     display: flex;
     flex-direction: column;
     text-align: center;
-    border: 3px solid #ffcc5b;
-    padding: 10px;
-    background-color: #fff176;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #e0dee5;
+    background-color: #eeecec;
+    border-radius: 10px;
+    width: 200px;
+    height: 100px;
   `,
   List: styled.li`
     color: #cccccc;
-    margin-bottom: 10px;
+    padding: 10px;
+    &:hover {
+      font-size: 20px;
+      font-weight: bold;
+      transition-duration: 0.5s;
+      color: black;
+    }
   `,
   Button: styled.button`
     color: #cccccc;
     font-size: 16px;
     background-color: transparent;
     border-style: none;
+    cursor: pointer;
+    &:hover {
+      font-size: 20px;
+      font-weight: bold;
+      transition-duration: 0.5s;
+      color: black;
+    }
   `,
 };

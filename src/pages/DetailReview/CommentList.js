@@ -12,7 +12,7 @@ const CommentList = () => {
 
   useEffect(() => {
     fetch(
-      `http://10.58.52.62:3000/review/plans?offset=0&limit=${commentCount}&planId=40`,
+      `http://43.201.110.57:3000/review/plans?offset=0&limit=${commentCount}&planId=40`,
       {
         method: "GET",
         headers: {

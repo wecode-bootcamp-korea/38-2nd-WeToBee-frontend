@@ -15,7 +15,7 @@ const DetailReview = () => {
     formData.append("comment", comment);
     formData.append("planId", 40);
 
-    fetch("http://10.58.52.62:3000/review/create", {
+    fetch("http://43.201.110.57:3000/review/create", {
       method: "POST",
       headers: {
         authorization: localStorage.getItem("accessToken"),
@@ -60,7 +60,6 @@ const DetailReview = () => {
 
   return (
     <>
-      <Menutab />
       <S.DetailReview>
         <S.DetailReviewContainer>
           <S.DetailReviewLabel>이용후기</S.DetailReviewLabel>
@@ -98,7 +97,7 @@ const S = {
     min-height: 100vh;
     display: flex;
     justify-content: center;
-    background-color: #eeecec;
+    background-color: rgb(245, 245, 245);
     overflow: auto;
   `,
   DetailReviewContainer: styled.div`
