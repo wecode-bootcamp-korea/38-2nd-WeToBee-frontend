@@ -65,7 +65,7 @@
 |      Socail Login      |  ![SocialSignIn](/public/images/%08SocailLogin.gif)   | - 소셜 로그인 </br> - 카카오 로그인 구현 | **FRONT-END** </br> `이다영` </br> **BACK-END** </br> `김경훈` |
 |   Main Planner Page    |    ![Create Planner](/public/images/MapCreate.gif)    |        - 사용자의 여행 플랜 생성         | **FRONT-END** </br> `정현석` </br> **BACK-END** </br> `김경훈` |
 |        Selling         |      ![Sell Planner](/public/images/Selling.gif)      |  - 사용자가 만든 여행 플랜의 판매 등록   | **FRONT-END** </br> `정현석` </br> **BACK-END** </br> `김경훈` |
-| Review Create & Delete |  ![Review](/public/images/ReviewCreateAndDelete.gif)  |             - 리뷰 기능 구현             |    **FRONT-END**`양동선` </br> **BACK-END** </br> `심채원`     |
+| Review Create & Delete |  ![Review](/public/images/ReviewCreateAndDelete.gif)  |             - 리뷰 기능 구현             |    **FRONT-END** </br> `양동선` </br> **BACK-END** </br> `심채원`     |
 |      Review Like       |           ![Like](/public/images/Like.gif)            |            - 리뷰 라이크 기능            | **FRONT-END** </br> `양동선` </br> **BACK-END** </br> `심채원` |
 |    infinite scroll     | ![infinite scroll](/public/images/infinitescroll.gif) |            - 무한 스크롤 기능            | **FRONT-END** </br>`양동선` </br> **BACK-END** </br> `심채원`  |
 
