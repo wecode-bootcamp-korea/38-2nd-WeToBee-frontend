@@ -158,6 +158,9 @@ const S = {
     background-color: white;
     width: 200px;
   `,
+  SaleButton: styled.button`
+    width: 50px;
+  `,
 };
 
 export default ProductPlannerDetailPage;

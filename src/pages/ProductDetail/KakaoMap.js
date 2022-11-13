@@ -22,9 +22,7 @@ const KakaoMap = () => {
   console.log(endDate);
 
   const managerRef = useRef(null);
-
   const [position, setPosition] = useState();
-
   const [overlayData, setOverlayData] = useState({
     arrow: [],
     circle: [],

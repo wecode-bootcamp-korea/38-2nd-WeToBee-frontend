@@ -75,7 +75,7 @@ const S = {
   `,
 
   NavLeft: styled.div`
-    width: 300px;
+    width: 250px;
   `,
 
   LeftTop: styled.p`
@@ -102,7 +102,6 @@ const S = {
   NavRight: styled.div`
     display: flex;
     margin-top: 10px;
-    width: 325px;
     color: #cccccc;
   `,
 
@@ -114,7 +113,6 @@ const S = {
 
   Login: styled.a`
     display: flex;
-    font-size: 25px;
     cursor: pointer;
     color: #cccccc;
   `,
