@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import CommentList from "./CommentList";
-import Menutab from "../Menutab/Menutab";
 
 const DetailReview = () => {
   const [files, setFiles] = useState();

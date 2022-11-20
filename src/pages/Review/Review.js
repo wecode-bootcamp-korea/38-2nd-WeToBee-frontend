@@ -9,7 +9,7 @@ const Review = () => {
   const [items, setItems] = useState([]);
   const [hasMore, setHasMore] = useState(true);
   const [offSet, setOffSet] = useState(0);
-  console.log(items);
+
   useEffect(() => {
     fetchData();
   }, []);
